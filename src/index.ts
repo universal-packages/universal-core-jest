@@ -17,7 +17,7 @@ global.jestCore = {
   runApp: (name: string, args?: Record<string, any>, coreConfigOverride?: CoreConfig): void => {
     JEST_CORE.processType = 'apps'
     JEST_CORE.processName = name
-    JEST_CORE.args = args
+    JEST_CORE.args = args || {}
     JEST_CORE.coreConfigOverride = coreConfigOverride
   },
   runBare: (coreConfigOverride?: CoreConfig): void => {
@@ -29,7 +29,7 @@ global.jestCore = {
 beforeAll(async (): Promise<void> => {
   switch (JEST_CORE.processType) {
     case 'apps':
-      JEST_CORE.stopFunction = await runApp(JEST_CORE.processName, JEST_CORE.coreConfigOverride)
+      JEST_CORE.stopFunction = await runApp(JEST_CORE.processName, JEST_CORE.args, false, JEST_CORE.coreConfigOverride)
       break
     case 'bare':
       JEST_CORE.stopFunction = await runBare(JEST_CORE.coreConfigOverride)
