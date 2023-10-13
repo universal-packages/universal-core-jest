@@ -1,3 +1,4 @@
+import '../src'
 import GoodModule from './__fixtures__/modules/Good.module'
 import GoodTask from './__fixtures__/tasks/Good.task'
 

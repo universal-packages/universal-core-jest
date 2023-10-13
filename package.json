@@ -37,9 +37,6 @@
     },
     "collectCoverageFrom": [
       "src/**/*.ts"
-    ],
-    "setupFilesAfterEnv": [
-      "<rootDir>/src/index.ts"
     ]
   },
   "prettier": {

@@ -1,3 +1,4 @@
+import '../src'
 import GoodApp from './__fixtures__/Good.app'
 import GoodModule from './__fixtures__/modules/Good.module'
 
