@@ -1,0 +1,31 @@
+default:
+  apps:
+   location: './tests/__fixtures__'
+  config:
+    location: './tests/__fixtures__/config'
+  modules:
+    asGlobals: true
+    location: './tests/__fixtures__/modules'
+  tasks:
+    location: './tests/__fixtures__/tasks'
+
+development:
+  apps:
+    watcher:
+      enabled: true
+      ignore:
+        - .github
+  logger:
+    level: QUERY
+    silence: false
+    terminal:
+      enable: true
+      clear: false
+      withHeader: true
+    localFile:
+      enable: true
+      asJson: false
+
+test:
+  logger:
+    silence: true
