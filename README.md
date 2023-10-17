@@ -4,7 +4,7 @@
 [![Testing](https://github.com/universal-packages/universal-core-jest/actions/workflows/testing.yml/badge.svg)](https://github.com/universal-packages/universal-core-jest/actions/workflows/testing.yml)
 [![codecov](https://codecov.io/gh/universal-packages/universal-core-jest/branch/main/graph/badge.svg?token=CXPJSN8IGL)](https://codecov.io/gh/universal-packages/universal-core-jest)
 
-Jest matchers for [Background Jobs](https://github.com/universal-packages/universal-background-jobs) testing.
+Jest tooling for [Universal Core](https://github.com/universal-packages/universal-core) testing.
 
 ## Install
 
@@ -67,6 +67,11 @@ it('should do something', async () => {
 ```
 
 ## Typescript
+In order for typescript to see the global types you need to reference the types somewhere in your project, normally `./src/globals.d.ts`.
+
+```ts
+/// <reference types="@universal-packages/core-jest" />
+```
 
 This library is developed in TypeScript and shipped fully typed.
 
