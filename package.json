@@ -34,6 +34,9 @@
     "preset": "ts-jest",
     "collectCoverageFrom": [
       "src/**/*.ts"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/tests/setup.ts"
     ]
   },
   "prettier": {
@@ -55,8 +58,5 @@
       "classProperties",
       "decorators-legacy"
     ]
-  },
-  "dependencies": {
-    "jest-environment-node": "^29.7.0"
   }
 }
