@@ -4,7 +4,7 @@ import GoodModule from './__fixtures__/modules/Good.module'
 
 jestCore.runBare()
 
-describe(jestCore.runApp, (): void => {
+describe(jestCore.runBare, (): void => {
   it('runs an app for this test suite', async (): Promise<void> => {
     expect(core).toEqual({
       App: null,
