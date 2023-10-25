@@ -1,38 +1,37 @@
-import { CoreConfig, execTask, runApp, runBare } from '@universal-packages/core'
+import { RunBareOptions, execTask, runApp, runBare } from '@universal-packages/core'
 
 import './globals'
+import { ExecTaskOptions, RunAppOptions } from './types'
 
 const JEST_CORE = {
-  args: null,
-  coreConfigOverride: null,
+  options: null,
   processType: null,
   processName: null,
   stopFunction: null
 }
 
 global.jestCore = {
-  execTask: async (name: string, directive?: string, directiveOptions?: string[], args?: Record<string, any>, coreConfigOverride?: CoreConfig): Promise<void> => {
-    return execTask(name, directive, directiveOptions, args, coreConfigOverride)
+  execTask: async (name: string, options?: ExecTaskOptions): Promise<void> => {
+    return execTask(name, { ...options, exitType: 'throw' })
   },
-  runApp: (name: string, args?: Record<string, any>, coreConfigOverride?: CoreConfig): void => {
+  runApp: (name: string, options?: RunAppOptions): void => {
     JEST_CORE.processType = 'apps'
     JEST_CORE.processName = name
-    JEST_CORE.args = args || {}
-    JEST_CORE.coreConfigOverride = coreConfigOverride
+    JEST_CORE.options = options
   },
-  runBare: (coreConfigOverride?: CoreConfig): void => {
+  runBare: (options?: RunBareOptions): void => {
     JEST_CORE.processType = 'bare'
-    JEST_CORE.coreConfigOverride = coreConfigOverride
+    JEST_CORE.options = options
   }
 }
 
 beforeAll(async (): Promise<void> => {
   switch (JEST_CORE.processType) {
     case 'apps':
-      JEST_CORE.stopFunction = await runApp(JEST_CORE.processName, JEST_CORE.args, false, JEST_CORE.coreConfigOverride)
+      JEST_CORE.stopFunction = await runApp(JEST_CORE.processName, { ...JEST_CORE.options, exitType: 'throw' })
       break
     case 'bare':
-      JEST_CORE.stopFunction = await runBare(JEST_CORE.coreConfigOverride)
+      JEST_CORE.stopFunction = await runBare({ ...JEST_CORE.options, exitType: 'throw' })
       break
   }
 })

@@ -1,10 +1,10 @@
-import { CoreConfig } from '@universal-packages/core'
+import { ExecTaskOptions, RunAppOptions, RunBareOptions } from './types'
 
 declare global {
   namespace jestCore {
-    function execTask(name: string, directive?: string, directiveOptions?: string[], args?: Record<string, any>, coreConfigOverride?: CoreConfig): Promise<void>
-    function runApp(name: string, args?: Record<string, any>, coreConfigOverride?: CoreConfig): void
-    function runBare(coreConfigOverride?: CoreConfig): void
+    function execTask(name: string, options?: ExecTaskOptions): Promise<void>
+    function runApp(name: string, options?: RunAppOptions): void
+    function runBare(options?: RunBareOptions): void
   }
 }
 
