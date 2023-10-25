@@ -26,7 +26,7 @@ module.exports = {
 
 ## Jest Global
 
-#### **`jestCore.runApp(name: string, [args: Object, coreConfigOverride: Object])`**
+#### **`jestCore.runApp(name: string, [options: Object])`**
 
 Run an app for all test cases in file and stop it after all tests are done.
 
@@ -40,7 +40,14 @@ it('should return the todo list', async () => {
 })
 ```
 
-#### **`jestCore.runBare([coreConfigOverride: Object])`**
+#### Options
+
+- **`args`** `Object`
+  Arguments to pass to the app.
+- **`coreConfigOverride`** `Object`
+  Override the core config for the run.
+
+#### **`jestCore.runBare([options: Object])`**
 
 Load core modules and let them be available for code that can be tested without running an app or task.
 
@@ -54,7 +61,12 @@ it('should be able to use global modules', async () => {
 })
 ```
 
-#### **`jestCore.execTask(name: string, [directive?: string, directiveOptions?: string[], args: Object, coreConfigOverride: Object])`**
+#### Options
+
+- **`coreConfigOverride`** `Object`
+  Override the core config for the run.
+
+#### **`jestCore.execTask(name: string, [options: Object])`**
 
 Runs a task on the spot use this per test case that needs to test what the task did.
 
@@ -66,7 +78,22 @@ it('should do something', async () => {
 })
 ```
 
+#### Options
+
+- **`args`** `Object`
+  Arguments to pass to the task.
+
+- **`directive`** `string`
+  The directive to run the task with.
+
+- **`directiveOptions`** `string[]`
+  The directive options to run the task with.
+
+- **`coreConfigOverride`** `Object`
+  Override the core config for the run.
+
 ## Typescript
+
 In order for typescript to see the global types you need to reference the types somewhere in your project, normally `./src/globals.d.ts`.
 
 ```ts
