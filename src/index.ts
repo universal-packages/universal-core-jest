@@ -12,7 +12,9 @@ const JEST_CORE = {
 
 global.jestCore = {
   execTask: async (name: string, options?: ExecTaskOptions): Promise<void> => {
-    return execTask(name, { ...options, exitType: 'throw' })
+    await execTask(name, { ...options, exitType: 'throw' })
+
+    process.removeAllListeners()
   },
   runApp: (name: string, options?: RunAppOptions): void => {
     JEST_CORE.processType = 'apps'
