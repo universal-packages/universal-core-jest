@@ -16,7 +16,7 @@
     "update-universal-dependencies": "umaintenance update-universal-dependencies"
   },
   "peerDependencies": {
-    "@universal-packages/core": "^1.17.4"
+    "@universal-packages/core": "^1.17.5"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.2.0",
@@ -60,6 +60,6 @@
     ]
   },
   "dependencies": {
-    "@universal-packages/logger-terminal-presenter": "^1.0.9"
+    "@universal-packages/logger-terminal-presenter": "^1.0.10"
   }
 }
