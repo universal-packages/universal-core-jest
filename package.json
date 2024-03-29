@@ -58,8 +58,5 @@
       "classProperties",
       "decorators-legacy"
     ]
-  },
-  "dependencies": {
-    "@universal-packages/logger-terminal-presenter": "^1.0.11"
   }
 }
