@@ -1,5 +1,3 @@
-import { TerminalPresenter } from '@universal-packages/terminal-presenter'
-
 import '../src'
 import GoodModule from './__fixtures__/modules/Good.module'
 import GoodTask from './__fixtures__/tasks/Good.task'
@@ -19,8 +17,7 @@ describe(jestCore.runApp, (): void => {
       stoppable: true,
       stopping: false,
       Task: GoodTask,
-      taskInstance: expect.any(GoodTask),
-      TerminalPresenter: TerminalPresenter
+      taskInstance: expect.any(GoodTask)
     })
     expect(GoodTask.iWasExecuted).toEqual(true)
     expect(GoodModule.iWasPrepared).toEqual(true)
