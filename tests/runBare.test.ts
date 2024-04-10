@@ -12,6 +12,10 @@ describe(jestCore.runBare, (): void => {
       appInstance: null,
       coreConfig: expect.anything(),
       coreModules: { goodModule: expect.any(GoodModule) },
+      developer: {
+        updateTaskProgress: expect.any(Function),
+        bucket: {}
+      },
       environments: [],
       logger: expect.anything(),
       projectConfig: { 'good-app': { good: true } },
