@@ -25,7 +25,3 @@ development:
     localFile:
       enable: true
       asJson: false
-
-test:
-  logger:
-    silence: true
