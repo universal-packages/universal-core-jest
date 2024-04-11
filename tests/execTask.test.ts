@@ -21,7 +21,23 @@ describe(jestCore.runApp, (): void => {
       stoppable: true,
       stopping: false,
       Task: GoodTask,
-      taskInstance: expect.any(GoodTask)
+      taskInstance: expect.any(GoodTask),
+      terminalPresenter: {
+        configure: expect.any(Function),
+        appendRealTimeDocument: expect.any(Function),
+        clearRealTimeDocuments: expect.any(Function),
+        clearScreen: expect.any(Function),
+        captureConsole: expect.any(Function),
+        prependRealTimeDocument: expect.any(Function),
+        present: expect.any(Function),
+        printString: expect.any(Function),
+        printDocument: expect.any(Function),
+        releaseConsole: expect.any(Function),
+        removeRealTimeDocument: expect.any(Function),
+        restore: expect.any(Function),
+        updateRealTimeDocument: expect.any(Function),
+        OPTIONS: expect.any(Object)
+      }
     })
     expect(GoodTask.iWasExecuted).toEqual(true)
     expect(GoodModule.iWasPrepared).toEqual(true)
