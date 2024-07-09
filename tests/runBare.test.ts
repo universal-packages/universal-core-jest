@@ -2,9 +2,9 @@ import '../src'
 import GoodApp from './__fixtures__/Good.app'
 import GoodModule from './__fixtures__/modules/Good.module'
 
-jestCore.runBare()
+coreJest.runBare()
 
-describe(jestCore.runBare, (): void => {
+describe(coreJest.runBare, (): void => {
   it('runs an app for this test suite', async (): Promise<void> => {
     expect(core).toEqual({
       App: null,
@@ -13,10 +13,12 @@ describe(jestCore.runBare, (): void => {
       coreConfig: expect.anything(),
       coreModules: { goodModule: expect.any(GoodModule) },
       developer: {
-        updateTaskProgress: expect.any(Function),
+        updateProgress: expect.any(Function),
         bucket: {}
       },
       environments: [],
+      Initializer: null,
+      initializerInstance: null,
       logger: expect.anything(),
       projectConfig: { 'good-app': { good: true } },
       stoppable: true,

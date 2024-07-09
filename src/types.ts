@@ -15,3 +15,9 @@ export interface RunAppOptions {
 export interface RunBareOptions {
   coreConfigOverride?: CoreConfig
 }
+
+export interface RunInitializerOptions {
+  args?: Record<string, any>
+  coreConfigOverride?: CoreConfig
+  locationOverride?: string
+}

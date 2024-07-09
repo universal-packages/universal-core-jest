@@ -2,9 +2,9 @@ import '../src'
 import GoodModule from './__fixtures__/modules/Good.module'
 import GoodTask from './__fixtures__/tasks/Good.task'
 
-describe(jestCore.runApp, (): void => {
-  it('runs an app for this test suite', async (): Promise<void> => {
-    await jestCore.execTask('good-task')
+describe(coreJest.execTask, (): void => {
+  it('runs an the specified task', async (): Promise<void> => {
+    await coreJest.execTask('good-task')
     expect(core).toEqual({
       App: null,
       appConfig: null,
@@ -12,10 +12,12 @@ describe(jestCore.runApp, (): void => {
       coreConfig: expect.anything(),
       coreModules: {},
       developer: {
-        updateTaskProgress: expect.any(Function),
+        updateProgress: expect.any(Function),
         bucket: {}
       },
       environments: [],
+      Initializer: null,
+      initializerInstance: null,
       logger: expect.anything(),
       projectConfig: { 'good-app': { good: true } },
       stoppable: true,

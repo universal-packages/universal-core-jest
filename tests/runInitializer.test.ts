@@ -1,26 +1,24 @@
 import '../src'
-import GoodApp from './__fixtures__/Good.app'
-import GoodModule from './__fixtures__/modules/Good.module'
+import GoodInitializer from './__fixtures__/Good.universal-core-initializer'
 
-coreJest.runApp('good-app')
-
-describe(coreJest.runApp, (): void => {
-  it('runs an app for this test suite', async (): Promise<void> => {
+describe(coreJest.runInitializer, (): void => {
+  it('runs an the specified initializer', async (): Promise<void> => {
+    await coreJest.runInitializer('good-initializer', { locationOverride: './tests/__fixtures__' })
     expect(core).toEqual({
-      App: GoodApp,
-      appConfig: { good: true },
-      appInstance: expect.any(GoodApp),
+      App: null,
+      appConfig: null,
+      appInstance: null,
       coreConfig: expect.anything(),
-      coreModules: { goodModule: expect.any(GoodModule) },
+      coreModules: null,
       developer: {
         updateProgress: expect.any(Function),
         bucket: {}
       },
-      environments: [],
-      Initializer: null,
-      initializerInstance: null,
+      environments: null,
+      Initializer: GoodInitializer,
+      initializerInstance: expect.any(GoodInitializer),
       logger: expect.anything(),
-      projectConfig: { 'good-app': { good: true } },
+      projectConfig: null,
       stoppable: true,
       stopping: false,
       Task: null,
@@ -42,8 +40,6 @@ describe(coreJest.runApp, (): void => {
         OPTIONS: expect.any(Object)
       }
     })
-    expect(GoodApp.iWasPrepared).toEqual(true)
-    expect(GoodApp.iWasRan).toEqual(true)
-    expect(GoodModule.iWasPrepared).toEqual(true)
+    expect(GoodInitializer.iWasInitialized).toEqual(true)
   })
 })

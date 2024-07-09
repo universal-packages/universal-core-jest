@@ -26,12 +26,12 @@ module.exports = {
 
 ## Jest Global
 
-#### **`jestCore.runApp(name: string, [options: Object])`**
+#### **`coreJest.runApp(name: string, [options: Object])`**
 
 Run an app for all test cases in file and stop it after all tests are done.
 
 ```js
-jestCore.runApp('web-server')
+coreJest.runApp('web-server')
 
 it('should return the todo list', async () => {
   const result = fetch('http://localhost:4000/todos')
@@ -47,12 +47,12 @@ it('should return the todo list', async () => {
 - **`coreConfigOverride`** `Object`
   Override the core config for the run.
 
-#### **`jestCore.runBare([options: Object])`**
+#### **`coreJest.runBare([options: Object])`**
 
 Load core modules and let them be available for code that can be tested without running an app or task.
 
 ```js
-jestCore.runBare()
+coreJest.runBare()
 
 it('should be able to use global modules', async () => {
   const result = await MyService.doSomething()
@@ -66,13 +66,13 @@ it('should be able to use global modules', async () => {
 - **`coreConfigOverride`** `Object`
   Override the core config for the run.
 
-#### **`jestCore.execTask(name: string, [options: Object])`**
+#### **`coreJest.execTask(name: string, [options: Object])`**
 
 Runs a task on the spot use this per test case that needs to test what the task did.
 
 ```js
 it('should do something', async () => {
-  await jestCore.execTask('maintain', 'deleted-users', ['fast'])
+  await coreJest.execTask('maintain', 'deleted-users', ['fast'])
 
   expect(User.deleted().count()).toEqual(0)
 })
@@ -91,6 +91,29 @@ it('should do something', async () => {
 
 - **`coreConfigOverride`** `Object`
   Override the core config for the run.
+
+#### **`coreJest.runInitializer(name: string, [options: Object])`**
+
+Runs an initializer on the spot use this per test case that needs to test what the initializer did.
+
+```js
+it('should do something', async () => {
+  await coreJest.runInitializer('library-initializer')
+
+  expect(fs.existsSync('file.txt')).toEqual(true)
+})
+```
+
+#### Options
+
+- **`args`** `Object`
+  Arguments to pass to the initializer.
+
+- **`coreConfigOverride`** `Object`
+  Override the core config for the run.
+
+- **`locationOverride`** `string`
+  Initializers are fetched from the `node_modules` folder by default. For testing this is change to the `,/src` folder. Since this is used for library development.
 
 ## Typescript
 
