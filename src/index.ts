@@ -34,8 +34,6 @@ global.coreJest = {
     CORE_JEST.processName = name
     CORE_JEST.options = options
 
-    jest.mock('@universal-packages/template-populator')
-
     await runInitializer(name, { locationOverride: './src', ...options, exitType: 'throw' })
 
     process.removeAllListeners()

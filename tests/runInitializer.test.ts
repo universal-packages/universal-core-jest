@@ -1,6 +1,8 @@
 import '../src'
 import GoodInitializer from './__fixtures__/Good.universal-core-initializer'
 
+jest.mock('@universal-packages/template-populator')
+
 describe(coreJest.runInitializer, (): void => {
   it('runs an the specified initializer', async (): Promise<void> => {
     await coreJest.runInitializer('good-initializer', { locationOverride: './tests/__fixtures__' })
@@ -11,8 +13,16 @@ describe(coreJest.runInitializer, (): void => {
       coreConfig: expect.anything(),
       coreModules: null,
       developer: {
-        updateProgress: expect.any(Function),
-        bucket: {}
+        bucket: {},
+        terminalPresenter: {
+          setProgressPercentage: expect.any(Function),
+          increaseProgressPercentageBy: expect.any(Function),
+          startProgressIncreaseSimulation: expect.any(Function),
+          finishProgressIncreaseSimulation: expect.any(Function),
+          setScriptOutput: expect.any(Function),
+          setSubProcess: expect.any(Function),
+          runSubProcess: expect.any(Function)
+        }
       },
       environments: null,
       Initializer: GoodInitializer,
