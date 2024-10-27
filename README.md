@@ -92,6 +92,20 @@ it('should do something', async () => {
 - **`coreConfigOverride`** `Object`
   Override the core config for the run.
 
+#### **`coreJest.abortTask()`**
+
+Aborts the task that is currently running.
+
+```js
+it('should abort the task', async () => {
+  coreJest.execTask('maintain', 'deleted-users', ['fast'])
+
+  await coreJest.abortTask()
+
+  expect(User.deleted().count()).toEqual(1)
+})
+```
+
 #### **`coreJest.runInitializer(name: string, [options: Object])`**
 
 Runs an initializer on the spot use this per test case that needs to test what the initializer did.
